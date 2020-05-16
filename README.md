@@ -71,7 +71,6 @@ Mode                LastWriteTime         Length Name
 -a----       16.05.2020     22:17           6390 CentOs8_2.ovf
 ```
 
-## Scenario: Creating Virtualbox-Image from ISO of CentOS
 
 # Good to know
 
