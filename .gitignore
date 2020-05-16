@@ -1,0 +1,4 @@
+/templates/CentosIsoToVirtualbox/packer_cache/*
+.idea/*
+output-virtualbox-iso/
+packer.exe

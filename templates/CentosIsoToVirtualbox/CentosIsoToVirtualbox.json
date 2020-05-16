@@ -1,0 +1,35 @@
+{
+  "__comment": "This JSON is heavily based on https://softwaretester.info/create-simple-centos-7-virtualbox-with-packer/.",
+
+  "variables": {
+    "iso": "file://C:/Downloads/CentOS-8.1.1911-x86_64-dvd1.iso",
+    "checksum": "8d0573c5fb5444007936b652d8c6724d"
+  },
+
+  "builders": [
+    {
+      "type": "virtualbox-iso",
+      "iso_url": "{{user `iso`}}",
+      "iso_checksum": "{{  user `checksum` }}",
+      "iso_checksum_type": "md5",
+      "vm_name": "CentOs8_2",
+      "guest_os_type": "RedHat_64",
+      "ssh_username": "root",
+      "ssh_password": "geheim123",
+      "ssh_timeout": "30m",
+
+      "vboxmanage": [
+        ["modifyvm", "{{.Name}}", "--memory", "8192"],
+        ["modifyvm", "{{.Name}}", "--cpus", "4"]
+      ],
+      "disk_size": "15000",
+
+      "http_directory": "http",
+      "boot_command": [
+        "<up><tab> text ks=http://{{ .HTTPIP}}:{{ .HTTPPort }}/ks.cfg<enter>"
+      ],
+
+      "shutdown_command": "/sbin/halt -p"
+    }
+  ]
+}
